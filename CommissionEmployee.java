@@ -1,19 +1,30 @@
+
 /*******************************************************************
  * Name: Anosha Naseri
- * Date: 10/08/2026
- * Assignment: C330L Week 1 Project
- * Title: Inheritance, Composition, and User Interactions
+ * Date: 10/15/2026
+ * Assignment: C330L Week 2 Course Project
+ * Title: Software Design, Interfaces, and Polymorphism
  *
  * Description:
  * This class represents a commission-based employee in the
  * Employee Management System. It inherits basic employee
- * information from the Employee class and adds a base salary,
+ * information from Employee and stores base salary,
  * total sales, and commission rate.
+ *
+ * This class demonstrates polymorphism by overriding
+ * calculatePay() with a commission-based calculation.
  *******************************************************************/
 
-// INHERITANCE: CommissionEmployee is a child class of Employee.
+// INHERITANCE:
+// CommissionEmployee extends the Employee superclass.
+//
+// POLYMORPHISM:
+// CommissionEmployee overrides calculatePay() to calculate
+// base salary plus commission earnings.
+
 public class CommissionEmployee extends Employee {
 
+    // Private class properties
     private double baseSalary;
     private double totalSales;
     private double commissionRate;
@@ -67,6 +78,13 @@ public class CommissionEmployee extends Employee {
         return baseSalary + calculateCommission();
     }
 
+    // POLYMORPHISM:
+    // Overrides calculatePay() to use the commission pay formula.
+    @Override
+    public double calculatePay() {
+        return calculateTotalPay();
+    }
+
     // Display all commission employee information
     @Override
     public String toString() {
@@ -81,6 +99,6 @@ public class CommissionEmployee extends Employee {
                 + "\nCommission Earned: $"
                 + String.format("%.2f", calculateCommission())
                 + "\nTotal Pay: $"
-                + String.format("%.2f", calculateTotalPay());
+                + String.format("%.2f", calculatePay());
     }
 }

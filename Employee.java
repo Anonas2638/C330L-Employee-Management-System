@@ -1,23 +1,36 @@
+
 /*******************************************************************
  * Name: Anosha Naseri
- * Date: 10/08/2026
- * Assignment: C330L Week 1 Project
- * Title: Inheritance, Composition, and User Interactions
+ * Date: 10/15/2026
+ * Assignment: C330L Week 2 Course Project
+ * Title: Software Design, Interfaces, and Polymorphism
  *
  * Description:
  * This class represents a general employee in the Employee
  * Management System. It stores basic employee information and
- * serves as the parent class for different employee types.
+ * serves as the superclass for different employee types.
  *
- * It also demonstrates composition by containing an Address object.
+ * This class demonstrates inheritance and composition.
+ * It also implements the Payable interface to support
+ * polymorphism when calculating employee pay.
  *******************************************************************/
 
-public class Employee {
+// INTERFACE DEMONSTRATION:
+// Employee implements the Payable interface.
+//
+// INHERITANCE:
+// HourlyEmployee, SalariedEmployee, and CommissionEmployee
+// inherit common information and methods from Employee.
+
+public class Employee implements Payable {
 
     private int employeeId;
     private String firstName;
     private String lastName;
     private String department;
+
+    // COMPOSITION:
+    // An Employee contains an Address object.
     private Address address;
 
     // Constructor
@@ -70,6 +83,15 @@ public class Employee {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    // INTERFACE IMPLEMENTATION:
+    // Provides a default pay calculation.
+    // Child classes will override this method with their
+    // own calculations for hourly, salary, and commission pay.
+    @Override
+    public double calculatePay() {
+        return 0.0;
     }
 
     // Displays basic employee information

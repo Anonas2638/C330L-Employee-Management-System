@@ -1,18 +1,30 @@
+
 /*******************************************************************
  * Name: Anosha Naseri
- * Date: 10/08/2026
- * Assignment: C330L Week 1 Project
- * Title: Inheritance, Composition, and User Interactions
+ * Date: 10/15/2026
+ * Assignment: C330L Week 2 Course Project
+ * Title: Software Design, Interfaces, and Polymorphism
  *
  * Description:
  * This class represents an hourly employee in the Employee
  * Management System. It inherits basic employee information
  * from the Employee class and adds hourly pay information.
+ *
+ * This class demonstrates polymorphism by overriding the
+ * calculatePay() method defined in the Payable interface
+ * and implemented by the Employee superclass.
  *******************************************************************/
 
-// INHERITANCE: HourlyEmployee is a child class of Employee.
+// INHERITANCE:
+// HourlyEmployee extends the Employee superclass.
+//
+// POLYMORPHISM:
+// HourlyEmployee overrides calculatePay() to provide
+// an hourly-specific pay calculation.
+
 public class HourlyEmployee extends Employee {
 
+    // Private class properties
     private double hourlyRate;
     private double hoursWorked;
 
@@ -46,7 +58,9 @@ public class HourlyEmployee extends Employee {
         this.hoursWorked = hoursWorked;
     }
 
-    // Calculate the employee's pay
+    // POLYMORPHISM:
+    // Overrides the interface method with an hourly calculation.
+    @Override
     public double calculatePay() {
         return hourlyRate * hoursWorked;
     }
