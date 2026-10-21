@@ -1,65 +1,85 @@
 
 /*******************************************************************
  * Name: Anosha Naseri
- * Date: 10/15/2026
- * Assignment: C330L Week 2 Course Project
- * Title: Software Design, Interfaces, and Polymorphism
+ * Date: 10/21/2026
+ * Assignment: C330L Week 3 Course Project
+ * Title: Abstraction, Constructors, & Access Specifiers
  *
  * Description:
- * This class represents a salaried employee in the Employee
- * Management System. It inherits basic employee information
- * from Employee and stores the employee's annual salary.
+ * This class represents a salaried employee in the
+ * Employee Management System.
  *
- * This class demonstrates polymorphism by overriding the
- * calculatePay() method from the Employee superclass,
- * which implements the Payable interface.
+ * It extends the abstract Employee superclass and
+ * calculates monthly pay from the annual salary.
+ *
+ * This class demonstrates abstraction, inheritance,
+ * overloaded constructors, encapsulation, access
+ * specifiers, and polymorphism.
  *******************************************************************/
-
-// INHERITANCE:
-// SalariedEmployee extends the Employee superclass.
-//
-// POLYMORPHISM:
-// SalariedEmployee provides its own calculatePay() method
-// to calculate monthly salary.
 
 public class SalariedEmployee extends Employee {
 
-    // Private class property
+    // ACCESS SPECIFIER:
+    // Private protects salary information from
+    // direct modification outside this class.
     private double annualSalary;
 
-    // Constructor
+    // PARAMETERIZED CONSTRUCTOR:
+    // Initializes the employee and annual salary.
     public SalariedEmployee(int employeeId, String firstName,
                             String lastName, String department,
                             Address address, double annualSalary) {
 
-        // Call the parent Employee constructor
+        // Calls the protected constructor of the
+        // abstract Employee superclass.
         super(employeeId, firstName, lastName, department, address);
 
-        this.annualSalary = annualSalary;
+        setAnnualSalary(annualSalary);
     }
 
-    // Getter and setter methods
+    // OVERLOADED CONSTRUCTOR:
+    // Allows an employee to be created before their
+    // annual salary has been assigned.
+    public SalariedEmployee(int employeeId, String firstName,
+                            String lastName, String department,
+                            Address address) {
+
+        this(employeeId, firstName, lastName,
+             department, address, 0.0);
+    }
+
+    // Public getter provides controlled access.
     public double getAnnualSalary() {
         return annualSalary;
     }
 
+    // Public setter validates the annual salary.
     public void setAnnualSalary(double annualSalary) {
+
+        if (!Double.isFinite(annualSalary) || annualSalary < 0) {
+            throw new IllegalArgumentException(
+                "Annual salary must be a valid non-negative number.");
+        }
+
         this.annualSalary = annualSalary;
     }
 
-    // Calculate the employee's monthly salary
+    // Calculates the employee's monthly salary.
     public double calculateMonthlyPay() {
         return annualSalary / 12;
     }
 
-    // POLYMORPHISM:
-    // Overrides calculatePay() to return monthly salary.
+    // ABSTRACTION AND POLYMORPHISM:
+    // Implements the abstract calculatePay() method
+    // inherited from Employee.
     @Override
     public double calculatePay() {
         return calculateMonthlyPay();
     }
 
-    // Display all salaried employee information
+    // METHOD OVERRIDING:
+    // Displays common employee information along
+    // with salaried-specific information.
     @Override
     public String toString() {
         return super.toString()

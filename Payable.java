@@ -1,24 +1,38 @@
 
 /*******************************************************************
  * Name: Anosha Naseri
- * Date: 10/15/2026
- * Assignment: C330L Week 2 Course Project
+ * Date: 10/21/2026
+ * Assignment: C330L Week 3 Course Project
+ * Title: Abstraction, Constructors, & Access Specifiers
  *
  * Description:
- * This interface defines a common method for calculating
- * employee pay. Different employee types can implement
- * this method using their own payment calculations.
+ * This interface defines a common contract for calculating
+ * employee pay in the Employee Management System.
  *
- * This interface will help demonstrate polymorphism
- * in the Employee Management Application.
+ * It demonstrates abstraction by declaring a method
+ * without providing its implementation.
+ *
+ * The abstract Employee class implements this interface,
+ * while HourlyEmployee, SalariedEmployee, and
+ * CommissionEmployee provide their own pay calculations.
+ *
+ * This interface supports abstraction and polymorphism.
  *******************************************************************/
 
-// INTERFACE DEMONSTRATION:
-// Defines a common behavior for different employee types.
+// ABSTRACTION:
+// The Payable interface defines a required behavior
+// without specifying how the calculation is performed.
+//
+// ACCESS SPECIFIER:
+// The interface is public so other classes can use it.
 
 public interface Payable {
 
-    // Calculates the pay for an employee.
+    // INTERFACE METHOD:
+    // Interface methods are implicitly public and abstract.
+    // Each concrete employee subclass must provide
+    // its own implementation of calculatePay().
+
     double calculatePay();
 
 }

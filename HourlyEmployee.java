@@ -1,77 +1,108 @@
 
 /*******************************************************************
  * Name: Anosha Naseri
- * Date: 10/15/2026
- * Assignment: C330L Week 2 Course Project
- * Title: Software Design, Interfaces, and Polymorphism
+ * Date: 10/21/2026
+ * Assignment: C330L Week 3 Course Project
+ * Title: Abstraction, Constructors, & Access Specifiers
  *
  * Description:
- * This class represents an hourly employee in the Employee
- * Management System. It inherits basic employee information
- * from the Employee class and adds hourly pay information.
+ * This class represents an hourly employee in the
+ * Employee Management System.
  *
- * This class demonstrates polymorphism by overriding the
- * calculatePay() method defined in the Payable interface
- * and implemented by the Employee superclass.
+ * It extends the abstract Employee superclass and
+ * calculates employee pay based on hourly rate
+ * multiplied by hours worked.
+ *
+ * This class demonstrates abstraction, inheritance,
+ * overloaded constructors, encapsulation, access
+ * specifiers, and polymorphism.
  *******************************************************************/
-
-// INHERITANCE:
-// HourlyEmployee extends the Employee superclass.
-//
-// POLYMORPHISM:
-// HourlyEmployee overrides calculatePay() to provide
-// an hourly-specific pay calculation.
 
 public class HourlyEmployee extends Employee {
 
-    // Private class properties
+    // ACCESS SPECIFIERS:
+    // Private fields prevent direct modification outside
+    // this class.
     private double hourlyRate;
     private double hoursWorked;
 
-    // Constructor
+    // PARAMETERIZED CONSTRUCTOR:
+    // Initializes all employee information, including
+    // hourly rate and hours worked.
     public HourlyEmployee(int employeeId, String firstName,
                           String lastName, String department,
                           Address address, double hourlyRate,
                           double hoursWorked) {
 
-        // Call the parent Employee constructor
+        // INHERITANCE:
+        // Calls the protected constructor of the
+        // abstract Employee superclass.
         super(employeeId, firstName, lastName, department, address);
 
-        this.hourlyRate = hourlyRate;
-        this.hoursWorked = hoursWorked;
+        setHourlyRate(hourlyRate);
+        setHoursWorked(hoursWorked);
     }
 
-    // Getter and setter methods
+    // OVERLOADED CONSTRUCTOR:
+    // Allows an hourly employee to be created with
+    // zero hours worked initially.
+    public HourlyEmployee(int employeeId, String firstName,
+                          String lastName, String department,
+                          Address address, double hourlyRate) {
+
+        this(employeeId, firstName, lastName,
+             department, address, hourlyRate, 0.0);
+    }
+
+    // Public getter provides controlled access.
     public double getHourlyRate() {
         return hourlyRate;
     }
 
+    // Public setter validates the hourly rate.
     public void setHourlyRate(double hourlyRate) {
+        if (!Double.isFinite(hourlyRate) || hourlyRate < 0) {
+            throw new IllegalArgumentException(
+                "Hourly rate must be a valid non-negative number.");
+        }
+
         this.hourlyRate = hourlyRate;
     }
 
+    // Public getter for hours worked.
     public double getHoursWorked() {
         return hoursWorked;
     }
 
+    // Public setter validates hours worked.
     public void setHoursWorked(double hoursWorked) {
+        if (!Double.isFinite(hoursWorked) || hoursWorked < 0) {
+            throw new IllegalArgumentException(
+                "Hours worked must be a valid non-negative number.");
+        }
+
         this.hoursWorked = hoursWorked;
     }
 
-    // POLYMORPHISM:
-    // Overrides the interface method with an hourly calculation.
+    // ABSTRACTION AND POLYMORPHISM:
+    // Implements the abstract calculatePay() method
+    // inherited from Employee.
     @Override
     public double calculatePay() {
         return hourlyRate * hoursWorked;
     }
 
-    // Display all hourly employee information
+    // METHOD OVERRIDING:
+    // Displays shared employee information along with
+    // hourly-specific details.
     @Override
     public String toString() {
         return super.toString()
                 + "\nEmployee Type: Hourly"
-                + "\nHourly Rate: $" + String.format("%.2f", hourlyRate)
+                + "\nHourly Rate: $"
+                + String.format("%.2f", hourlyRate)
                 + "\nHours Worked: " + hoursWorked
-                + "\nTotal Pay: $" + String.format("%.2f", calculatePay());
+                + "\nTotal Pay: $"
+                + String.format("%.2f", calculatePay());
     }
 }
