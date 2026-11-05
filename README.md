@@ -100,7 +100,7 @@ The application creates its SQLite database table if it does not already exist.
 
 **Watch the Final Project Demonstration:**
 
-[Employee Management System — Java & SQLite Demonstration](https://youtu.be/WBjMAfWKndc)
+[Employee Management System — Java & SQLite Demonstration](https://youtu.be/WBjMAfWKndc))
 
 ### Video Overview
 
