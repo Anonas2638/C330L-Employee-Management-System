@@ -91,9 +91,31 @@ The application creates its SQLite database table if it does not already exist.
 
 ## Project Demonstration
 
-**YouTube Video:** Coming soon — final project demonstration.
+### Employee Management System — Final Project Video
 
-The video will demonstrate the Java application, SQLite database operations, employee management features, and object-oriented programming concepts.
+**Developer:** Anosha Naseri  
+**Application:** Employee Management System  
+**Technologies:** Java, SQLite, JDBC  
+**Video Duration:** Approximately 7 minutes
+
+**Watch the Final Project Demonstration:**
+
+[Employee Management System — Java & SQLite Demonstration](https://youtu.be/WBjMAfWKndc)
+
+### Video Overview
+
+This demonstration provides a walkthrough of the completed Employee Management System, including the Java source code, object-oriented programming concepts, and SQLite database functionality.
+
+The video covers:
+
+- **Application Overview:** Introduction to the Employee Management System and its features.
+- **Object-Oriented Programming:** Demonstration of inheritance, abstraction, interfaces, composition, polymorphism, constructors, and encapsulation.
+- **Employee Management:** Viewing, searching, and filtering hourly, salaried, and commission-based employees.
+- **Database Operations:** Adding, updating, retrieving, and deleting employee records using SQLite.
+- **Compensation Calculations:** Demonstrating how each employee type calculates pay differently.
+- **Application Navigation:** Using the interactive console menu and exiting the application.
+
+The demonstration highlights how Java object-oriented programming and SQLite database integration work together to create a functional employee management application.
 
 ---
 
